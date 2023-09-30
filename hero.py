@@ -15,7 +15,7 @@ class Hero:
 
 
 if __name__ == "_main_":
-    my_hero = Hero("Spiderman")
-    opponent = Hero("Storm")
+    my_hero = Hero("Spiderman", 300)
+    opponent = Hero("Storm", 200)
 
     Hero.fight(opponent)
