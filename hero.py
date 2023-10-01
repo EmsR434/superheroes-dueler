@@ -1,7 +1,9 @@
 import random
 
+from opponent import Opponent
 from ability import Ability
 from armor import Armor
+from weapons import Weapon
 
 
 class Hero:
@@ -65,14 +67,21 @@ class Hero:
         '''Calculate the total block amount from all armor blocks.
         return: total_block:Int
         '''
+        self.damage = 0
         # start the total out at 0
         total_block = 0 
         # loop through all of our hero's armor
-        for ability in self.armor:
+        for armor in self.armor:
             # add the damage of each attack to our running total
-            total_block += ability.block()
+            total_block += armor.block()
         # return the total blocked damage
         return total_block
+    
+    def add_weapon(self, weapon):
+        '''Add weapon to self.abilties'''
+        self.abilities.append(weapon)
+        pass
+
     
     def take_damage(self, damage):
         '''Updates self.current_health to reflect the damage minus the defense.
@@ -87,21 +96,12 @@ class Hero:
         # if it is <= 0, then return False. Otherwise, they still have health
         # and are therefore alive, so return True
         pass
-
+    
 
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
-
-    hero = Hero("Spiderman")
-    opponent = Hero("Storm")
-    ability1 = Ability("Super Speed", 300)
-    ability2 = Ability("Super Eyes", 130)
-    ability3 = Ability("Wizard Wand", 80)
-    ability4 = Ability("Wizard Beard", 20)
-    Hero.add_ability(ability1)
-    Hero.add_ability(ability2)
-    Hero.add_ability(ability3)
-    Hero.add_ability(ability4)
-    Hero.fight(opponent)
-
+    hero = Hero("Wonder Woman")
+    weapon = Weapon("Lasso of Truth", 90)
+    hero.add_weapon(weapon)
+    print(hero.attack())
